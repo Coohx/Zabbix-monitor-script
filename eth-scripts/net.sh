@@ -52,7 +52,7 @@ if [ $2 == "in" ];then
 	# 保存当前时刻的时间戳和进网卡流量
 	date +%s >> /tmp/net_"$eth"_in.log
 	grep "$eth" $net_file |awk '{print $2}' >> /tmp/net_"$eth"_in.log
-	elif [ $2 == "out" ];then
+elif [ $2 == "out" ];then
     # 过滤出当前时刻出网卡$eth的流量
     n_new=`grep "$eth" $net_file |awk '{print $10}'`
     n_old=`tail -1 /tmp/net_"$eth"_out.log`
