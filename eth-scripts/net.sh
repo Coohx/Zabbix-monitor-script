@@ -53,19 +53,19 @@ if [ $2 == "in" ];then
 	date +%s >> /tmp/net_"$eth"_in.log
 	grep "$eth" $net_file |awk '{print $2}' >> /tmp/net_"$eth"_in.log
 elif [ $2 == "out" ];then
-    # 过滤出当前时刻出网卡$eth的流量
-    n_new=`grep "$eth" $net_file |awk '{print $10}'`
-    n_old=`tail -1 /tmp/net_"$eth"_out.log`
-    dn=`echo "$n_new-$n_old" |bc`
-
-    t_new=`date +%s`
-    t_old=`tail -2 /tmp/net_"$eth"_out.log |head -1`
-    dt=`echo "$t_new-$t_old" |bc`
-    if_net=`echo "$dn/$dt" |bc`
-    echo $if_net
-    # 保存当前时刻的时间戳和出网卡流量
-    date +%s >> /tmp/net_"$eth"_out.log
-    grep "$eth" $net_file |awk '{print $10}' >> /tmp/net_"$eth"_out.log
+	# 过滤出当前时刻出网卡$eth的流量
+	n_new=`grep "$eth" $net_file |awk '{print $10}'`
+	n_old=`tail -1 /tmp/net_"$eth"_out.log`
+	dn=`echo "$n_new-$n_old" |bc`
+	
+	t_new=`date +%s`
+	t_old=`tail -2 /tmp/net_"$eth"_out.log |head -1`
+	dt=`echo "$t_new-$t_old" |bc`
+	if_net=`echo "$dn/$dt" |bc`
+	echo $if_net
+	# 保存当前时刻的时间戳和出网卡流量
+	date +%s >> /tmp/net_"$eth"_out.log
+	grep "$eth" $net_file |awk '{print $10}' >> /tmp/net_"$eth"_out.log
 else
 	echo 0
 fi
