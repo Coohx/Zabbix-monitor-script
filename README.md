@@ -23,7 +23,7 @@ Note: Those scripts is used to monitor the Zabbix-agent server.
 	 #   See 'zabbix_agentd' directory for examples.
      UserParameter=my.net.if[*],/usr/local/sbin/zabbix/bin/net.sh $1 $2
 
->	 服务端web页面设置
+> 服务端web页面设置
 
 The example site is http://yangrong.blog.51cto.com/6945369/1542271
 
