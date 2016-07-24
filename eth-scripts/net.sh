@@ -20,7 +20,7 @@ else
 	date +%s >> /tmp/net_"$eth"_in.log
 	grep "$eth" $net_file |awk '{print $2}'  >> /tmp/net_"$eth"_in.log
 	# 开始文件不存在，创建完之后，只需修改一次属主。
-    chown zabbix /tmp/net_"$eth"_in.log 
+	chown zabbix /tmp/net_"$eth"_in.log 
 fi
 # 初始化生成网卡out 记录文件
 if [ -f /tmp/net_"$eth"_out.log ];then
@@ -30,7 +30,7 @@ else
 	date +%s >> /tmp/net_"$eth"_out.log
 	grep "$eth" $net_file |awk '{print $10}'  >> /tmp/net_"$eth"_out.log
 	# 开始文件不存在，创建完之后，只需修改一次属主。
-    chown zabbix /tmp/net_"$eth"_out.log 
+	chown zabbix /tmp/net_"$eth"_out.log 
 	sleep 1
 fi
 
